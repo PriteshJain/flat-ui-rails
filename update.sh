@@ -11,7 +11,7 @@ TAG=$1
 EXTRACT_DIRECTORY="$$$(date "+%Y%m%d%H%M%S")"
 FILE_NAME="$EXTRACT_DIRECTORY.tar.gz"
 RELEASE_URL="https://github.com/designmodo/Flat-UI/archive/$TAG.tar.gz"
-RELEASE_PATH="$EXTRACT_DIRECTORY/flat-ui-$TAG"
+RELEASE_PATH="$EXTRACT_DIRECTORY/Flat-UI-$TAG"
 VENDOR_PATH="vendor/assets"
 
 wget -O $FILE_NAME $RELEASE_URL
@@ -20,4 +20,6 @@ tar xfz $FILE_NAME -C $EXTRACT_DIRECTORY
 
 cp "$RELEASE_PATH/css/flat-ui.css" "$VENDOR_PATH/stylesheets"
 cp -R "$RELEASE_PATH/images" $VENDOR_PATH
-
+cp -R "$RELEASE_PATH/fonts"  $VENDOR_PATH
+rm -rf $EXTRACT_DIRECTORY
+rm $FILE_NAME
